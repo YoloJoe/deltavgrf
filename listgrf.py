@@ -3,13 +3,6 @@ from os.path import isfile, join
 from os import walk
 
 # GraphicsIFix = "D:\DeltaV\DVData\GraphicsIFix\Pic"
-# grfPath = "Z:\DeltaV\SI Group\Graphics-iFix\Pic"
-# grfList = [f for f in listdir(grfPath) if isfile(join(grfPath, f))]
-# outFile = open('grfList.txt', 'w')
-# for line in grfList:
-#     outFile.write(line + "\n")
-#
-# outFile.close()
 
 
 def getgraphics(graphics_path, out_file="graphicsList.txt", out_path=""):
@@ -21,6 +14,8 @@ def getgraphics(graphics_path, out_file="graphicsList.txt", out_path=""):
     :param out_path: str - Fully qualified path of destination file.  If blank, output file is created in local path
     :return:
     """
+    # grf_list syntax attributed to user pycruft -
+    # http://stackoverflow.com/questions/3207219/how-to-list-all-files-of-a-directory-in-python
     grf_list = [f for f in listdir(graphics_path) if isfile(join(graphics_path, f))]
     outfile = open(out_path + out_file, 'w')
     for line in grf_list:
@@ -41,7 +36,7 @@ def getgrfs(grf_path, out_file="grfList.txt", out_path=""):
     grf_list = [f for f in listdir(grf_path) if isfile(join(grf_path, f))]
     outfile = open(out_path + out_file, 'w')
     for line in grf_list:
-        if line[:3] = 'grf':
+        if 'grf' in line:
             outfile.write(line + "\n")
 
     outfile.close()
